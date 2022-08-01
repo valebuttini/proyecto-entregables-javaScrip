@@ -1,5 +1,5 @@
 function solicitarDestino() {
-  let destino = prompt("Ingresar su destino elegido");
+  let destino = prompt("Elige e Ingrese su destino  \nValle Grande \nLos Reyunos \nEl Tigre " );
   alert("su destino elegido   es " + destino);
 }
 let cantidadPersonas=0;
@@ -33,7 +33,7 @@ num1=1000;
 let multiplicacion=0;
 function calcularPrecio() {
   multiplicacion= cantidadPersonas*num1;
-  alert("el precio final para" + ESPACIO + cantidadPersonas + ESPACIO + "personas" + ESPACIO + "es " + multiplicacion)
+  alert("el precio final para" + ESPACIO + cantidadPersonas + ESPACIO + "personas (MAYORES DE EDAD)" + ESPACIO + "es " + multiplicacion)
 }
 
 
