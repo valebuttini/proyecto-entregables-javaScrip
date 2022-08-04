@@ -89,7 +89,7 @@ const desafios = [
     disponibilidad: true,
   },
   {
-    id: "23415",
+    id: "23416",
     nombre: "Cerro Los Reyunos",
     dificultad: "Nivel 5",
     precio: 3000,
