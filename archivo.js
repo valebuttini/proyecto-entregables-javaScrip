@@ -31,6 +31,8 @@ function solicitarCantidad() {
 
 solicitarCantidad();
 solicitarDestino();
+
+
 const desafios = [
   {
     id: "12345",
@@ -105,13 +107,15 @@ const desafios = [
     disponibilidad: true,
   },
 ];
+
+
 let dificultadUsuario = parseInt(prompt("ingrese la dificultad apta para las personas a desarrollar la excursion"));
 const dificultades = desafios.filter((el)=> el.dificultad == dificultadUsuario );
 
 console.table(dificultades);
 
 {
-  const respuestaUsuario = (idDesafio) =>  {
+  const idUsuario = (idDesafio) =>  {
   
     const {
   
@@ -130,25 +134,17 @@ console.table(dificultades);
   } = desafios.find( desafio => desafio.id == idDesafio );
   
     let aString =`
-  
       ID: ${id}
-  
       Nombre: ${nombre}
-  
       Dificultad: ${dificultad}
-  
       Disponibilidad: ${disponibilidad}
-  
       Precio por persona $: ${precio}
-  
-      Horas: ${horas}
-  
-    `;
+      Horas: ${horas}`;
   
       alert(aString);
   
   };
-  respuestaUsuario(prompt("ingresa el Id de tu desafio elegido"));
+  idUsuario(prompt("ingresa el Id de tu desafio elegido"));
   
 }
 
