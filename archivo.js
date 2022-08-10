@@ -1,3 +1,5 @@
+// funciones solicitantes de datos mediante if y else
+
 function solicitarDestino() {
   let destino = prompt(
     "Elige e Ingrese su destino  \nValle Grande \nLos Reyunos \nEl Tigre "
@@ -23,7 +25,7 @@ let cantidadPersonas = 0;
 function solicitarCantidad() {
   cantidadPersonas = parseInt(
     prompt(
-      "Bienvenidos !! Ingresar cantidad de personas a realizar la excursion en numeros"
+      "Bienvenidos!! Ingresar cantidad de personas a realizar la excursion en numeros"
     )
   );
   alert("La cantidad de personas  es " + cantidadPersonas);
@@ -31,7 +33,6 @@ function solicitarCantidad() {
 
 solicitarCantidad();
 solicitarDestino();
-
 
 const desafios = [
   {
@@ -93,7 +94,7 @@ const desafios = [
   {
     id: "23416",
     nombre: "Cerro Los Reyunos",
-    dificultad: 2 ,
+    dificultad: 2,
     precio: 3000,
     horas: 6,
     disponibilidad: false,
@@ -108,51 +109,54 @@ const desafios = [
   },
 ];
 
+let dificultadUsuario = parseInt(
+  prompt(
+    "ingrese la dificultad apta para las personas a desarrollar la excursion"
+  )
+);
+// metodo de filtrado
 
-let dificultadUsuario = parseInt(prompt("ingrese la dificultad apta para las personas a desarrollar la excursion"));
-const dificultades = desafios.filter((el)=> el.dificultad == dificultadUsuario );
+const dificultades = desafios.filter(
+  (el) => el.dificultad == dificultadUsuario
+);
 
 console.table(dificultades);
-
+// busqueda por id
 {
-  const idUsuario = (idDesafio) =>  {
-  
+  const idUsuario = (idDesafio) => {
     const {
-  
-      id, 
-  
-      nombre, 
-  
-      dificultad, 
-  
-      disponibilidad, 
-  
-      precio, 
-  
-      horas
-  
-  } = desafios.find( desafio => desafio.id == idDesafio );
-  
-    let aString =`
+      id,
+
+      nombre,
+
+      dificultad,
+
+      disponibilidad,
+
+      precio,
+
+      horas,
+    } = desafios.find((desafio) => desafio.id == idDesafio);
+
+    let aString = `
       ID: ${id}
       Nombre: ${nombre}
       Dificultad: ${dificultad}
       Disponibilidad: ${disponibilidad}
       Precio por persona $: ${precio}
       Horas: ${horas}`;
-  
-      alert(aString);
-  
+
+    alert(aString);
   };
   idUsuario(prompt("ingresa el Id de tu desafio elegido"));
-  
 }
 
-const actualizarPrecios = desafios.map((el) =>{
-  return{
+// nuevo array con precion actualizados mas iva
+const actualizarPrecios = desafios.map((el) => {
+  return {
     nombre: el.nombre,
-    precio: el.precio +(el.precio*0.21)
-  }
-})
-console.log("los precios con  IVA son:")
-console.log(actualizarPrecios)
+    precio: (el.precio +( el.precio * 0.21)),
+  };
+});
+console.log("los precios con  IVA son:");
+console.log(actualizarPrecios);
