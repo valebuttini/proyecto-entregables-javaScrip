@@ -18,5 +18,16 @@
     display: flex;
     margin-left: 29rem;
 }
-
+.tarjetasGenerales1{
+    display: flex;
+    padding: 10px;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.tarjetasGenerales2{
+    display: flex;
+    padding: 10px;
+    flex-direction: row;
+    justify-content: space-around;
+}
 
