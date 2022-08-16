@@ -24,6 +24,7 @@
   color: black;
   font-size: 16px;
 }
+/* seccion Index+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 .tituloMontaña {
   display: flex;
   margin-left: 25rem;
@@ -64,5 +65,21 @@
   padding: 10px;
   flex-direction: row;
   justify-content: space-around;
+  height: 30rem;
+}
+#listaF{
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(87, 87, 87);
+  align-items: center;
+  justify-content: center;
+}
+/* seccion desafios++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+.titulosDesafios{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 35px;
+  background-color: rgba(138, 166, 218, 0.829);
 }
 
