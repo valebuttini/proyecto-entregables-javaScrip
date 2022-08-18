@@ -13,6 +13,7 @@
     />
     <title>Montaña Andina-Desafios</title>
   </head>
+
   <body>
     <header>
       <nav class="navegador">
@@ -20,15 +21,84 @@
         <li><a href="../paginas/quienesSomos.html">QUIENES SOMOS</a></li>
         <li><a href="../paginas/desafios.html">DESAFIOS</a></li>
         <li><a href="../paginas/carrito.html">CARRITO</a></li>
+        <button
+          id="toggleMyModal"
+          type="button"
+          class="btn btn-primary"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+        >
+          Ver carrito de compras <i class="bi bi-bag-check-fill"></i>
+        </button>
       </nav>
     </header>
-    <main>
     <section>
-      <div class="titulosDesafios">
-        <h4 id="cambioTitulo">ELEGI TU TREKING</h4>
-        <H5>NOS VOLVIMOS LOCOS !!</H5>
+      <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Carrito</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <div class="container">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">ID</th>
+                      <th scope="col">Nombre</th>
+                      <th scope="col">Cantidad</th>
+                      <th scope="col">Precio</th>
+                      <th scope="col">Total</th>
+                      <th scope="col"></th>
+                    </tr>
+                  </thead>
+                  <tbody id="items"></tbody>
+                  <tfoot>
+                    <tr id="footer">
+                      <th scope="row" colspan="6">
+                        Carrito vacío - comience a comprar!
+                      </th>
+                    </tr>
+                  </tfoot>
+                </table>
+                <div class="row" id="cards"></div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Cerrar
+              </button>
+              <button type="button" class="btn btn-primary">
+                Terminar compra
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
+    <main>
+      <section>
+        <div class="titulosDesafios">
+          <h4 id="cambioTitulo">ELEGI TU TREKING</h4>
+          <h5>NOS VOLVIMOS LOCOS !!</h5>
+        </div>
+      </section>
       <!-- aqui cards desaafios -->
       <section class="tarjetaDesafio1">
         <div id="carta1"></div>
@@ -39,7 +109,8 @@
         <div id="carta4"></div>
         <div id="carta5"></div>
         <div id="carta6"></div>
-      </section> 
+      </section>
+      -->
     </main>
     <footer>
       <div id="listaF"></div>
@@ -50,5 +121,6 @@
       crossorigin="anonymous"
     ></script>
     <script src="../desafios.js"></script>
+    <script src="../objetos.js"></script>
   </body>
 </html>

@@ -1,4 +1,3 @@
-// objeto numero 1.  De 3 destinos posibles
 class destino {
   constructor(nombre, ruta, picture) {
     this.nombre = nombre;
@@ -21,40 +20,47 @@ const destino3 = new destino(
   "Ruta Nacional 150",
   "./imagenes/tigreDestino.jpg"
 );
-// creo las 3 cartas para estos objetos
 let tarjetaIndex1 = document.getElementById("tarjetaIndex1");
 tarjetaIndex1.innerHTML = `
-        <div class="card" style="width: 18rem;">
-              <img src="${destino1.picture}" class="card-img-top" alt="avistaje de condores">
-              <div class="card-body">
-                <h5 class="card-title">${destino1.nombre}</h5>
-                <p class="card-text">${destino1.ruta}</p>
-                <a href="../paginas/desafios.html" class="btn btn-primary">Comprar</a>
-              </div>
-        </div>
-`;
+          <div class="card" style="width: 18rem;">
+                <img src="${destino1.picture}" class="card-img-top" alt="avistaje de condores">
+                <div class="card-body">
+                  <h5 class="card-title">${destino1.nombre}</h5>
+                  <p class="card-text">${destino1.ruta}</p>
+                  <a href="../paginas/desafios.html" id="botonIndex" class="btn btn-secondary">IR</a>
+                </div>
+          </div>
+  `;
 let tarjetaIndex2 = document.getElementById("tarjetaIndex2");
 tarjetaIndex2.innerHTML = `
-        <div class="card" style="width: 18rem;">
-              <img src="${destino2.picture}" class="card-img-top" alt="avistaje de condores">
-              <div class="card-body">
-                <h5 class="card-title">${destino2.nombre}</h5>
-                <p class="card-text">${destino2.ruta}</p>
-                <a href="../paginas/desafios.html" class="btn btn-primary">Comprar</a>
-              </div>
-        </div>
-`;
+          <div class="card" style="width: 18rem;">
+                <img src="${destino2.picture}" class="card-img-top" alt="avistaje de condores">
+                <div class="card-body">
+                  <h5 class="card-title">${destino2.nombre}</h5>
+                  <p class="card-text">${destino2.ruta}</p>
+                  <a href="../paginas/desafios.html" id="botonIndex" class="btn btn-secondary">IR</a>
+                </div>
+          </div>
+  `;
 let tarjetaIndex3 = document.getElementById("tarjetaIndex3");
 tarjetaIndex3.innerHTML = `
-        <div class="card" style="width: 18rem;">
-              <img src="${destino3.picture}" class="card-img-top" alt="avistaje de condores">
-              <div class="card-body">
-                <h5 class="card-title">${destino3.nombre}</h5>
-                <p class="card-text">${destino3.ruta}</p>
-                <a href="../paginas/desafios.html" class="btn btn-primary">Comprar</a>
-              </div>
-        </div>
-`;
+          <div class="card" style="width: 18rem;">
+                <img src="${destino3.picture}" class="card-img-top" alt="avistaje de condores">
+                <div class="card-body">
+                  <h5 class="card-title">${destino3.nombre}</h5>
+                  <p class="card-text">${destino3.ruta}</p>
+                  <a href="../paginas/desafios.html" id="botonIndex" class="btn btn-secondary">IR</a>
+                </div>
+          </div>
+  `;
+
+ let botonIndex=document.getElementById("botonIndex");
+ botonIndex.addEventListener("click",interactuar);
+ function interactuar(){
+  alert("sos mayor de edad?")
+  prompt("indicar si o no");
+ }
+ 
 //  cree el footer desde js y lo modifico desde css
 let listaF = document.getElementById("listaF");
 listaF.innerHTML =
