@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+      crossorigin="anonymous"
+    />
+    <title>Montaña</title>
+  </head>
+  <body>
+    <header>
+      <nav class="navegador">
+        <li><a href="./index.html">INICIO</a></li>
+        <li><a href="../paginas/quienesSomos.html">QUIENES SOMOS</a></li>
+        <li><a href="./desafios.html">DESAFIOS</a></li>
+        <li><a href="../paginas/carrito.html">CARRITO</a></li>
+        <button
+          id="toggleMyModal"
+          type="button"
+          class="btn btn-primary"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+        >
+          Ver carrito de compras <i class="bi bi-bag-check-fill"></i>
+        </button>
+      </nav>
+      <div>
+        <h4>Tu carrito:</h4>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Horas</th>
+                    <th scope="col">Precio <b>p/persona</b></th>
+                    <th scope="col">Cantidad</th>
+                </tr>
+            </thead>
+            <tbody id="tablabody">
+                <!-- aqui tabla carrito -->
+            </tbody>
+        </table>
+     </div>
+    </header>
+    <main>
+      <section id="card1" class="tarjetaDesafio">
+      </section> 
+    </main>
+    <!-- footer con JS -->
+    <footer>
+      <div id="listaF"></div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="./desafios.js"></script>
+  </body>
+</html>

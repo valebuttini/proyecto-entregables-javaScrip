@@ -31,7 +31,7 @@ tarjetaIndex1.innerHTML = `
                 <div class="card-body">
                   <h5 class="card-title">${destino1.nombre}</h5>
                   <p class="card-text">${destino1.ruta}</p>
-                  <a href="../paginas/desafios.html" id="botonIndex" class="btn btn-secondary">IR</a>
+                  <a href="./desafios.html" id="botonIndex" class="btn btn-secondary">IR</a>
                 </div>
           </div>
   `;
@@ -42,7 +42,7 @@ tarjetaIndex2.innerHTML = `
                 <div class="card-body">
                   <h5 class="card-title">${destino2.nombre}</h5>
                   <p class="card-text">${destino2.ruta}</p>
-                  <a href="../paginas/desafios.html" id="botonIndex2" class="btn btn-secondary">IR</a>
+                  <a href="./desafios.html" id="botonIndex2" class="btn btn-secondary">IR</a>
                 </div>
           </div>
   `;
@@ -53,7 +53,7 @@ tarjetaIndex3.innerHTML = `
                 <div class="card-body">
                   <h5 class="card-title">${destino3.nombre}</h5>
                   <p class="card-text">${destino3.ruta}</p>
-                  <a href="../paginas/desafios.html" id="botonIndex3" class="btn btn-secondary">IR</a>
+                  <a href="./desafios.html" id="botonIndex3" class="btn btn-secondary">IR</a>
                 </div>
           </div>
   `;

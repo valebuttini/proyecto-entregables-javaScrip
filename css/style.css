@@ -83,3 +83,7 @@
   background-color: rgba(138, 166, 218, 0.829);
 }
 
+.tarjetaDesafio{
+  display: flex;
+  flex-direction: row;
+}
