@@ -20,32 +20,33 @@
         <li><a href="../paginas/quienesSomos.html">QUIENES SOMOS</a></li>
         <li><a href="./desafios.html">DESAFIOS</a></li>
         <li><a href="../paginas/carrito.html">CARRITO</a></li>
-        <button
-          id="toggleMyModal"
-          type="button"
-          class="btn btn-primary"
-          data-bs-toggle="modal"
-          data-bs-target="#exampleModal"
-        >
-          Ver carrito de compras <i class="bi bi-bag-check-fill"></i>
-        </button>
+        <dialog id="formulario">
+          <form method="dialog">
+            <section id="tablaBody">
+              <!-- <p><label for="favAnimal">Metodo de pago</label>
+              <select id="favAnimal" name="favAnimal">
+                <option></option>
+                <option>Efectivo</option>
+                <option>Mercado Pago</option>
+                <option>Tarjeta</option>
+              </select></p> -->
+              <tr>
+                <td>Nombre</td>
+                <td>Cantidad</td>
+                <td>Precio</td>
+                <td>Total</td>
+              </tr>
+            </section>
+            <menu>
+              <button id="cancelar" type="reset">Cancel</button>
+              <button type="submit">Confirm</button>
+            </menu>
+          </form>
+        </dialog>
+        <menu>
+          <button id="verCarrito">Ver mi Carrito</button>
+        </menu>
       </nav>
-      <div>
-        <h4>Tu carrito:</h4>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Horas</th>
-                    <th scope="col">Precio <b>p/persona</b></th>
-                    <th scope="col">Cantidad</th>
-                </tr>
-            </thead>
-            <tbody id="tablabody">
-                <!-- aqui tabla carrito -->
-            </tbody>
-        </table>
-     </div>
     </header>
     <main>
       <section id="card1" class="tarjetaDesafio">

@@ -86,26 +86,53 @@ function renderizarDesafios() {
         `;
   }
 }
+(() => {
+  const verCarrito = document.getElementById('verCarrito');
+  const cancelar = document.getElementById('cancelar');
+  const dialog = document.getElementById('formulario');
+  dialog.returnValue = 'favAnimal';
 
-// eventos del boton por id dinamico
- desafios.forEach((desafio) => {
+  // function openCheck(dialog) {
+  //   if (dialog.open) {
+  //     console.log('Dialog open');
+  //   } else {
+  //     console.log('Dialog closed');
+  //   }
+  // }
+
+  // Update button opens a modal dialog
+  verCarrito.addEventListener('click', () => {
+    dialog.showModal();
+    // openCheck(dialog);
+  });
+
+  // Form cancel button closes the dialog box
+  cancelar.addEventListener('click', () => {
+    dialog.close('animalNotChosen');
+    // openCheck(dialog);
+  });
+
+})();
+
+
+// // eventos del boton por id dinamico
+   desafios.forEach((desafio) => {
      //evento para cada boton
-     document.getElementById(`btn${desafio.id}`).addEventListener("click", function () {
-       agregarAlCarrito(desafio);
-     });
- });
+    document.getElementById(`btn${desafio.id}`).addEventListener("click", function () {
+       agregarAlCarrito(desafio);       });
+  });
 
 function agregarAlCarrito(desafio) {
-  carrito.push(desafio);
+carrito.push(desafio);
   console.log(carrito);
-  document.getElementById("tablabody").innerHTML += `
-  <tr>
-      <td>${desafio.nombreDesafio}</td>
-      <td>${desafio.horas}</td>
-      <td>${desafio.precio}</td>
-  </tr>
-  `;
-}
+   document.getElementById("tablaBody").innerHTML += `
+//   <tr>
+//      <td>${desafio.nombreDesafio}</td>
+//       <td>${desafio.horas}</td>
+//       <td>${desafio.precio}</td>
+//   </tr>
+//   `;
+ }
 
  let listaF = document.getElementById("listaF");
   listaF.innerHTML = `<ul><li>INSTAGRAM</li><li>FACEBOOK</li><li>WATHSAAP</li></ul>`;

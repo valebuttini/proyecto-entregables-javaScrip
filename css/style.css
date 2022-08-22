@@ -48,19 +48,8 @@
   margin-top: 20px;
   font-size: 2rem;
 }
-.tarjetaDesafio1 {
-  display: flex;
-  padding: 10px;
-  flex-direction: row;
-  justify-content: space-around;
-}
-.tarjetaDesafio2 {
-  display: flex;
-  padding: 10px;
-  flex-direction: row;
-  justify-content: space-around;
-} 
-.tarjetasGeneralesIndex {
+
+.cardIndexClass {
   display: flex;
   padding: 10px;
   flex-direction: row;
@@ -82,8 +71,12 @@
   margin-top: 35px;
   background-color: rgba(138, 166, 218, 0.829);
 }
-
-.tarjetaDesafio{
+.tarjetaDesafio {
   display: flex;
-  flex-direction: row;
+  padding: 10px;
+  flex-wrap: wrap;
+  flex-direction: row-reverse;
+  justify-content: space-evenly;
 }
+
+
