@@ -61,14 +61,21 @@ const desafios = [{
 },
 ];
 // logica para la creacion de las cards 
-const carrito = [];
 
-let card=document.getElementById("card1");
+let carrito = [];
+  document.addEventListener('DOMContentLoaded', () => {
+    if(localStorage.getItem('carrito')){
+      carrito = JSON.parse(localStorage.getItem('carrito'))
+
+    } })
+
+
+let card = document.getElementById("card1");
 
 renderizarDesafios();
 function renderizarDesafios() {
   for (const desafio of desafios) {
-      card.innerHTML+=`
+    card.innerHTML += `
             <div class="card" style="width: 18rem;">
             <img src="${desafio.foto}" class="card-img-top" alt="..">
                <div class="col-xxl-2">
@@ -86,53 +93,47 @@ function renderizarDesafios() {
         `;
   }
 }
+
+
 (() => {
   const verCarrito = document.getElementById('verCarrito');
   const cancelar = document.getElementById('cancelar');
   const dialog = document.getElementById('formulario');
-  dialog.returnValue = 'favAnimal';
 
-  // function openCheck(dialog) {
-  //   if (dialog.open) {
-  //     console.log('Dialog open');
-  //   } else {
-  //     console.log('Dialog closed');
-  //   }
-  // }
-
-  // Update button opens a modal dialog
+  // Mostrar carrito
   verCarrito.addEventListener('click', () => {
     dialog.showModal();
-    // openCheck(dialog);
   });
 
-  // Form cancel button closes the dialog box
+  // cerrar carrito
   cancelar.addEventListener('click', () => {
-    dialog.close('animalNotChosen');
-    // openCheck(dialog);
+    dialog.close();
   });
 
 })();
 
-
 // // eventos del boton por id dinamico
-   desafios.forEach((desafio) => {
-     //evento para cada boton
-    document.getElementById(`btn${desafio.id}`).addEventListener("click", function () {
-       agregarAlCarrito(desafio);       });
+desafios.forEach((desafio) => {
+  document.getElementById(`btn${desafio.id}`).addEventListener("click", function () {
+    agregarAlCarrito(desafio);
   });
+});
 
+// creacion de tabla carrito
 function agregarAlCarrito(desafio) {
-carrito.push(desafio);
-  console.log(carrito);
-   document.getElementById("tablaBody").innerHTML += `
-//   <tr>
-//      <td>${desafio.nombreDesafio}</td>
-//       <td>${desafio.horas}</td>
-//       <td>${desafio.precio}</td>
-//   </tr>
-//   `;
- }
+  carrito.push(desafio);
+  document.getElementById("tablaBody").innerHTML+=`
+      <tr>
+          <td>${desafio.nombreDesafio}</td>
+          <td>${desafio.horas}</td>
+          <td>${desafio.precio}</td>
+          <td>Total</td> 
+      </tr>
+   `;
+   alert("Producto "+desafio.nombreDesafio+" agregado al carrito!");
+   localStorage.setItem('carrito', JSON.stringify(carrito));
+  
+}
 
- let listaF = document.getElementById("listaF");
-  listaF.innerHTML = `<ul><li>INSTAGRAM</li><li>FACEBOOK</li><li>WATHSAAP</li></ul>`;
+let listaF = document.getElementById("listaF");
+listaF.innerHTML = `<ul><li>INSTAGRAM</li><li>FACEBOOK</li><li>WATHSAAP</li></ul>`;

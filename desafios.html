@@ -22,24 +22,31 @@
         <li><a href="../paginas/carrito.html">CARRITO</a></li>
         <dialog id="formulario">
           <form method="dialog">
-            <section id="tablaBody">
-              <!-- <p><label for="favAnimal">Metodo de pago</label>
-              <select id="favAnimal" name="favAnimal">
-                <option></option>
-                <option>Efectivo</option>
+            <section>
+              <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Horas</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Total</th>
+                    </tr>
+                </thead>
+                <tbody id="tablaBody">
+                    <!-- aqui tabla carrito -->
+                </tbody>
+            </table>
+            <p><labe>Metodo de pago:</label>
+              <select>
+                <option>Ingresa una opcion</option>
                 <option>Mercado Pago</option>
                 <option>Tarjeta</option>
-              </select></p> -->
-              <tr>
-                <td>Nombre</td>
-                <td>Cantidad</td>
-                <td>Precio</td>
-                <td>Total</td>
-              </tr>
+                <option>Efectivo</option>
+              </select></p>
             </section>
             <menu>
-              <button id="cancelar" type="reset">Cancel</button>
-              <button type="submit">Confirm</button>
+              <button id="cancelar" type="reset">Cancelar</button>
+              <button type="submit">Confirmar</button>
             </menu>
           </form>
         </dialog>
