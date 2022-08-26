@@ -88,9 +88,9 @@ function renderizarDesafios() {
                       <h5 class="card-title">Id: ${desafio.id}</h5>
                       <h5 class="card-title">Horas: ${desafio.horas}</h5>
                       <p class="card-text">${desafio.descripcion}</p>
-                      <p class="card-text">Dificultad: ${desafio.dificultad}</p>
-                      <p class="card-text">Precio P/P: $${desafio.precio}</p>
-                      <button class='btn btn-danger' id='btn${desafio.id}'>Comprar</button>
+                      <p class="card-text"><b>Dificultad:</b> ${desafio.dificultad}</p>
+                      <p class="card-text"><b>Precio</b> P/P: $${desafio.precio}</p>
+                      <button class='btn btn-success' id='btn${desafio.id}'>Comprar</button>
                   </div>
               </div>
             </div>
@@ -105,6 +105,10 @@ function renderizarDesafios() {
   const dialog = document.getElementById("formulario");
 
   // Mostrar carrito
+
+  verCarrito.innerHTML+=`
+  <button type="button" class="btn btn-success">Ver Mi Carrito</button>
+  `
   verCarrito.addEventListener("click", () => {
     dialog.showModal();
   });

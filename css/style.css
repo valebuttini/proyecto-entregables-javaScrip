@@ -27,14 +27,20 @@
 /* seccion Index+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 .tituloMontaña {
   display: flex;
-  margin-left: 25rem;
+  margin-left: 29rem;
   margin-top: 15px;
-  font-size: 3rem;
+  font-size: 2.5rem;
+  color: rgb(0, 106, 113);
+}
+.quienesSomos{
+  background-image: url(https://p4.wallpaperbetter.com/wallpaper/319/24/935/landscape-mountains-peacefull-far-view-wallpaper-preview.jpg) ;
+  height: 20rem;
+  background-repeat:round;
 }
 .titulo2 {
   display: flex;
   margin-left: 32rem;
-  margin-top: 15px;
+  margin-top: 35px;
   font-size: 1.5rem;
   text-decoration: underline;
 }
@@ -45,16 +51,17 @@
 .tituloDestino {
   display: flex;
   margin-left: 25rem;
-  margin-top: 20px;
+  margin-top: 50px;
+  margin-bottom: 50px;
   font-size: 2rem;
+  color: rgb(0, 106, 113);
 }
 
 .cardIndexClass {
   display: flex;
-  padding: 10px;
   flex-direction: row;
   justify-content: space-around;
-  height: 30rem;
+  height: 20rem;
 }
 #listaF{
   display: flex;
@@ -62,6 +69,7 @@
   background-color: rgb(87, 87, 87);
   align-items: center;
   justify-content: center;
+  margin-top: 3rem;
 }
 /* seccion desafios++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 .titulosDesafios{
@@ -79,10 +87,60 @@
   justify-content: space-evenly;
 }
 .card-title{
-  font-size: 15px;
+  font-size: 20px;
+  color: rgb(0, 106, 113);
 }
 .card-text{
-  font-size: 10px;
+  font-size: 15px;
 
 }
+.img-fluid{
+  display: flex;
+  height: auto;
+  width: 70rem;
+  margin-left: 3rem;
+} 
+.tituloDesafio{
+  margin-bottom: 2rem;
+  margin-left: 15px;
+  color: rgb(0, 106, 113);
 
+}
+.tituloDescuento{
+  margin-left: 15px;
+  font-size: 30px;
+  word-spacing: 300px;
+  padding-left: 2px;
+}
+.imagenPrincipal{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+ .tituloPrincipalCard{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+  color: rgb(0, 106, 113);
+} 
+
+
+
+
+
+/* seccion quienes somos *********************************************************************************************/
+.quienesSomosTexto{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  margin-top: 6rem;
+  text-align: center;
+}
+.quienesSomosTexto p{
+  max-width: 30rem;
+}

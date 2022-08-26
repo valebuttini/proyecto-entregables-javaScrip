@@ -7,7 +7,7 @@ const destinos = [{
 {
   nombre: "Valle Grande",
   picture: "./imagenes/valleDestino.jpg",
-  ruta: "Las agatas",
+  ruta: "Ruta Provincial 153",
 },
 {
   nombre: "El tigre",
@@ -21,12 +21,12 @@ renderizarDestinos();
 function renderizarDestinos() {
   for (const destino of destinos) {
       cardIndex.innerHTML+=`
-       <div class="card" style="width: 18rem;">
+       <div class="card" style="width: 16rem;">
             <img src="${destino.picture}" class="card-img-top" alt="""">
             <div class="card-body">
               <h5 class="card-title">${destino.nombre}</h5>
               <p class="card-text">${destino.ruta}</p>
-              <a href="./desafios.html" id="botonIndex" class="btn btn-secondary">IR</a>
+              <a href="./desafios.html" id="botonIndex" class="btn btn-success">IR</a>
             </div>
        </div>
         `;
