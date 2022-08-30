@@ -126,6 +126,12 @@
   margin-bottom: 2rem;
   color: rgb(0, 106, 113);
 } 
+.messi{
+  color: red;
+}
+#tablaBody{
+  border-radius: solid  red 10px;
+}
 
 
 

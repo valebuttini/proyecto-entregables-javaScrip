@@ -59,6 +59,36 @@ const desafios = [
       "Si buscan ver paisajes, entonces deben conocer el cerro Gallo",
   },
 ];
+// Eleccion del tiempo con operador &&
+// en grados celcius
+
+let tiempoVeranoMendoza = 30; 
+let estacion = "verano";
+
+let tiempoInviernoMendoza = 10;
+let estacionInvierno = "invierno";
+
+let tiempoPrimaveraMendoza = 20;
+let estacionPrimavera = "primavera";
+
+let tiempoOtonoMendoza = 15;
+let estacionOtono = "otono";
+
+
+(tiempoVeranoMendoza==30)&&(estacion=="verano") ? console.log("puede salir de treking") : console.log("No")
+
+
+
+
+// let seleccionar = document.getElementById('tiempo');
+// let primerNum = document.getElementById("primerNum")
+
+// seleccionar.addEventListener('change', (e) => {
+  
+//   tiempoVeranoMendoza.push(primerNum)
+//   alert(tiempoVeranoMendoza)
+//  });
+
 
 // recuperar datos del storage con evento al ingresar a la pagina y mostrarlos por consola
 
@@ -66,8 +96,17 @@ let carrito;
 document.addEventListener("DOMContentLoaded", () => {
   if (localStorage.getItem("carrito")) {
      carrito = JSON.parse(localStorage.getItem("carrito"));
-     
-    console.table(carrito);
+     carrito.map((desafio)=>{
+      document.getElementById("tablaBody").innerHTML += `
+      <tr>
+          <td>${desafio.nombreDesafio}</td>
+          <td>${desafio.horas}</td>
+          <td>${desafio.precio}</td>
+          <td><input id="" type="number" value="" min="1" max="1000" step="1" style="width: 50px;"/></td>
+          <td>Total</td> 
+      </tr>
+   `;
+     })
   }else{
     carrito = [];
   }
@@ -85,7 +124,6 @@ function renderizarDesafios() {
                <div class="col-xxl-2">
                   <div class="card-body">
                       <h4 class="card-title">${desafio.nombreDesafio}</h4>
-                      <h5 class="card-title">Id: ${desafio.id}</h5>
                       <h5 class="card-title">Horas: ${desafio.horas}</h5>
                       <p class="card-text">${desafio.descripcion}</p>
                       <p class="card-text"><b>Dificultad:</b> ${desafio.dificultad}</p>
@@ -130,13 +168,15 @@ desafios.forEach((desafio) => {
 
 // creacion de tabla carrito
 function agregarAlCarrito(desafio) {
+  const cantidad =[];
   carrito.push(desafio);
   document.getElementById("tablaBody").innerHTML += `
       <tr>
           <td>${desafio.nombreDesafio}</td>
           <td>${desafio.horas}</td>
           <td>${desafio.precio}</td>
-          <td>Total</td> 
+          <td><input id="cantidadProductos${desafio.id}" type="number" value"${cantidad}" min="1" max="1000" step="1" style="width: 50px;"/></td>
+          <td>$ ${(desafio.precio*cantidad)}</td>
       </tr>
    `;
   Swal.fire(
@@ -145,7 +185,19 @@ function agregarAlCarrito(desafio) {
     "success"
   );
 localStorage.setItem("carrito", JSON.stringify(carrito));
+
+
+let cantidadProductos = document.getElementById(`cantidadProductos${desafio.id}`);
+cantidadProductos.innerHTML+=cantidad;
+
+cantidadProductos.addEventListener("change", (e) => {
+  cantidad.push(cantidadProductos);
+  desafio.precio*cantidad;
+  
+});
+
 };
 
 let listaF = document.getElementById("listaF");
 listaF.innerHTML = `<ul><li>INSTAGRAM</li><li>FACEBOOK</li><li>WATHSAAP</li></ul>`;
+
