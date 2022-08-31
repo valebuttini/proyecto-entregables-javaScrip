@@ -59,35 +59,32 @@ const desafios = [
       "Si buscan ver paisajes, entonces deben conocer el cerro Gallo",
   },
 ];
-// Eleccion del tiempo con operador &&
-// en grados celcius
-
-let tiempoVeranoMendoza = 30; 
+// Eleccion del tiempo con operador && y OR. Elegi el tiempo segun la estacion del año en donde predomina mas.
+ 
 let estacion = "verano";
 
-let tiempoInviernoMendoza = 10;
 let estacionInvierno = "invierno";
 
-let tiempoPrimaveraMendoza = 20;
 let estacionPrimavera = "primavera";
 
-let tiempoOtonoMendoza = 15;
 let estacionOtono = "otono";
 
+const select = document.getElementById('tiempo');
+const para = document.getElementById('parrafoTiempo');
 
-(tiempoVeranoMendoza==30)&&(estacion=="verano") ? console.log("puede salir de treking") : console.log("No")
+select.addEventListener("change", () => {
+  const eleccion = select.value;
 
+  ((eleccion=="soleado")&&(estacion=="verano") ? Swal.fire ('El tiempo en San Rafael hoy es ideal para salir de treking!')  : "") || (  (eleccion=="lloviendo")&&(estacionOtono=="otono") ? Swal.fire ('Se recomienda no salir, si lo hace, con precaucion !!') : "" )
 
+})
 
+select.addEventListener("change", () => {
+  const eleccionSegundaParte = select.value;
 
-// let seleccionar = document.getElementById('tiempo');
-// let primerNum = document.getElementById("primerNum")
+  ((eleccionSegundaParte=="nieve")&&(estacionInvierno=="invierno") ? Swal.fire ('Es recomendable no salir de su cabana hoy')  : "") || (  (eleccionSegundaParte=="nublado")&&(estacionPrimavera=="primavera") ? Swal.fire ('El dia esta apto para realizar treking, puede llover !')  : "" )
+})
 
-// seleccionar.addEventListener('change', (e) => {
-  
-//   tiempoVeranoMendoza.push(primerNum)
-//   alert(tiempoVeranoMendoza)
-//  });
 
 
 // recuperar datos del storage con evento al ingresar a la pagina y mostrarlos por consola
@@ -166,6 +163,8 @@ desafios.forEach((desafio) => {
     });
 });
 
+
+
 // creacion de tabla carrito
 function agregarAlCarrito(desafio) {
   const cantidad =[];
@@ -197,6 +196,7 @@ cantidadProductos.addEventListener("change", (e) => {
 });
 
 };
+
 
 let listaF = document.getElementById("listaF");
 listaF.innerHTML = `<ul><li>INSTAGRAM</li><li>FACEBOOK</li><li>WATHSAAP</li></ul>`;
