@@ -167,7 +167,8 @@ desafios.forEach((desafio) => {
 
 // creacion de tabla carrito
 function agregarAlCarrito(desafio) {
-  const cantidad =[];
+  let cantidad;
+  cantidadOperacion = [];
   carrito.push(desafio);
   document.getElementById("tablaBody").innerHTML += `
       <tr>
@@ -175,7 +176,7 @@ function agregarAlCarrito(desafio) {
           <td>${desafio.horas}</td>
           <td>${desafio.precio}</td>
           <td><input id="cantidadProductos${desafio.id}" type="number" value"${cantidad}" min="1" max="1000" step="1" style="width: 50px;"/></td>
-          <td>$ ${(desafio.precio*cantidad)}</td>
+          <td>$ ${desafio.precio*cantidadNueva}</td>
       </tr>
    `;
   Swal.fire(
@@ -187,12 +188,9 @@ localStorage.setItem("carrito", JSON.stringify(carrito));
 
 
 let cantidadProductos = document.getElementById(`cantidadProductos${desafio.id}`);
-cantidadProductos.innerHTML+=cantidad;
-
-cantidadProductos.addEventListener("change", (e) => {
-  cantidad.push(cantidadProductos);
-  desafio.precio*cantidad;
-  
+cantidadProductos.addEventListener("click", (e) => {
+cantidadNueva = cantidadProductos.value;
+console.log(cantidadNueva*desafio.precio);
 });
 
 };
