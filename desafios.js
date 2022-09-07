@@ -59,35 +59,53 @@ const desafios = [
       "Si buscan ver paisajes, entonces deben conocer el cerro Gallo",
   },
 ];
-// Eleccion del tiempo con operador && y OR. Elegi el tiempo segun la estacion del año en donde predomina mas.
- 
-let estacion = "verano";
+// clima con API.
+let temperaturaValor = document.getElementById('temperatura-valor')  
+let temperaturaDescripcion = document.getElementById('temperatura-descripcion')  
+let atardecer = document.getElementById('atardecer')
+let ultimaActualizacion = document.getElementById('ultimaActualizacion')
 
-let estacionInvierno = "invierno";
+const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': 'b775cf1501mshc2c4a06925cfa9cp1491e9jsne18837d3f64e',
+		'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com'
+	}
+};
 
-let estacionPrimavera = "primavera";
+fetch('https://weatherapi-com.p.rapidapi.com/forecast.json?q=Mendoza&days=2&lang=es&dt=2022-09-14', options)
+	.then(response => response.json())
+	.then(tiempo => verTiempo(tiempo))
+	.catch(err => console.error(err));
+  
+function verTiempo(tiempo){
+  console.log(tiempo)
+  let temperaturaActual= (tiempo.current.temp_c);
+  let descripcion= (tiempo.current.condition.text)
+  let atardecerSanRafael= (tiempo.forecast.forecastday[0].astro.sunset)
+  let actualizacion= (tiempo.current.last_updated)
+  temperaturaValor.innerHTML +=`
+  <ul>
+  <li>${temperaturaActual} º Grados Celcius</li>
+  </ul>
+  `;
+  temperaturaDescripcion.innerHTML +=`
+  <ul>
+  <li>${descripcion}</li>
+  </ul>
+  `;
+  atardecer.innerHTML +=`
+  <ul>
+  <li>${atardecerSanRafael}</li>
+  </ul>
+  `;
+  ultimaActualizacion.innerHTML +=`
+  <ul>
+  <li>Ultima Actualizacion${actualizacion}</li>
+  </ul>
+  `;
 
-let estacionOtono = "otono";
-
-const select = document.getElementById('tiempo');
-const para = document.getElementById('parrafoTiempo');
-
-select.addEventListener("change", () => {
-  const eleccion = select.value;
-
-  ((eleccion=="soleado")&&(estacion=="verano") ? Swal.fire ('El tiempo en San Rafael hoy es ideal para salir de treking!')  : "") || (  (eleccion=="lloviendo")&&(estacionOtono=="otono") ? Swal.fire ('Se recomienda no salir, si lo hace, con precaucion !!') : "" )
-
-})
-
-select.addEventListener("change", () => {
-  const eleccionSegundaParte = select.value;
-
-  ((eleccionSegundaParte=="nieve")&&(estacionInvierno=="invierno") ? Swal.fire ('Es recomendable no salir de su cabana hoy')  : "") || (  (eleccionSegundaParte=="nublado")&&(estacionPrimavera=="primavera") ? Swal.fire ('El dia esta apto para realizar treking, puede llover !')  : "" )
-})
-
-
-
-// recuperar datos del storage con evento al ingresar a la pagina y mostrarlos por consola
+}
 
 let carrito; 
 document.addEventListener("DOMContentLoaded", () => {
@@ -168,7 +186,6 @@ desafios.forEach((desafio) => {
 // creacion de tabla carrito
 function agregarAlCarrito(desafio) {
   let cantidad;
-  cantidadOperacion = [];
   carrito.push(desafio);
   document.getElementById("tablaBody").innerHTML += `
       <tr>
@@ -176,7 +193,7 @@ function agregarAlCarrito(desafio) {
           <td>${desafio.horas}</td>
           <td>${desafio.precio}</td>
           <td><input id="cantidadProductos${desafio.id}" type="number" value"${cantidad}" min="1" max="1000" step="1" style="width: 50px;"/></td>
-          <td>$ ${desafio.precio*cantidadNueva}</td>
+          <td>$ ${desafio.precio}</td>
       </tr>
    `;
   Swal.fire(

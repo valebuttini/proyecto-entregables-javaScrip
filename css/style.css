@@ -132,6 +132,33 @@
 #tablaBody{
   border-radius: solid  red 10px;
 }
+/* tiempoooooooooooooooooooooooooooooo */
+#contenedor{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
+}
+#caja1{
+  width: 370px;
+  height: 270px;
+  background-color:  burlywood;
+  margin-left: 150px;
+  
+  
+}
+#caja2{
+  width: 270px;
+  height: 190px;
+  background-color: rgb(0, 106, 113);
+  margin-left: 130px;
+  
+}
+#temperatura-valor{
+  list-style: none;
+
+
+}
 
 
 
@@ -150,3 +177,6 @@
 .quienesSomosTexto p{
   max-width: 30rem;
 }
+
+
+
