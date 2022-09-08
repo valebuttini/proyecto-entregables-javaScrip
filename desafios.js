@@ -59,11 +59,12 @@ const desafios = [
       "Si buscan ver paisajes, entonces deben conocer el cerro Gallo",
   },
 ];
-// clima con API.
+// clima con API open weather.
 let temperaturaValor = document.getElementById('temperatura-valor')  
 let temperaturaDescripcion = document.getElementById('temperatura-descripcion')  
 let atardecer = document.getElementById('atardecer')
 let ultimaActualizacion = document.getElementById('ultimaActualizacion')
+let nombre = document.getElementById('nombreLugar')
 
 const options = {
 	method: 'GET',
@@ -80,54 +81,62 @@ fetch('https://weatherapi-com.p.rapidapi.com/forecast.json?q=Mendoza&days=2&lang
   
 function verTiempo(tiempo){
   console.log(tiempo)
-  let temperaturaActual= (tiempo.current.temp_c);
-  let descripcion= (tiempo.current.condition.text)
-  let atardecerSanRafael= (tiempo.forecast.forecastday[0].astro.sunset)
-  let actualizacion= (tiempo.current.last_updated)
+  let nombreMendoza = (tiempo.location.region);
+  let temperaturaActual = (tiempo.current.temp_c);
+  let descripcion = (tiempo.current.condition.text);
+  let atardecerSanRafael= (tiempo.forecast.forecastday[0].astro.sunset);
+  let actualizacion = (tiempo.current.last_updated);
+  nombre.innerHTML +=`
+  <tr>
+   <td>${nombreMendoza} </td>
+  </tr>
+  `;
   temperaturaValor.innerHTML +=`
-  <ul>
-  <li>${temperaturaActual} º Grados Celcius</li>
-  </ul>
+  <tr>
+   <td>${temperaturaActual} º Grados Celcius</td>
+  </tr>
   `;
   temperaturaDescripcion.innerHTML +=`
-  <ul>
-  <li>${descripcion}</li>
-  </ul>
+  <tr>
+  <td>${descripcion}</td>
+  </tr>
   `;
   atardecer.innerHTML +=`
-  <ul>
-  <li>${atardecerSanRafael}</li>
-  </ul>
+  <tr>
+  <td>${atardecerSanRafael}</td>
+  </tr>
   `;
   ultimaActualizacion.innerHTML +=`
-  <ul>
-  <li>Ultima Actualizacion${actualizacion}</li>
-  </ul>
+  <tr>
+  <td>Ultima Actualizacion ${actualizacion}</td>
+  </tr>
   `;
-
 }
 
-let carrito; 
-document.addEventListener("DOMContentLoaded", () => {
-  if (localStorage.getItem("carrito")) {
-     carrito = JSON.parse(localStorage.getItem("carrito"));
-     carrito.map((desafio)=>{
-      document.getElementById("tablaBody").innerHTML += `
-      <tr>
-          <td>${desafio.nombreDesafio}</td>
-          <td>${desafio.horas}</td>
-          <td>${desafio.precio}</td>
-          <td><input id="" type="number" value="" min="1" max="1000" step="1" style="width: 50px;"/></td>
-          <td>Total</td> 
-      </tr>
-   `;
-     })
-  }else{
-    carrito = [];
-  }
-});
+// Carrito de compras con storage y evento al cargar
 
-// logica para la creacion de las cards
+ let carrito; 
+ document.addEventListener("DOMContentLoaded", () => {
+   if (localStorage.getItem("carrito")) {
+      carrito = JSON.parse(localStorage.getItem("carrito"));
+      carrito.map((desafio)=>{
+       document.getElementById("tablaBody").innerHTML += `
+       <tr>
+           <td>${desafio.nombreDesafio}</td>
+           <td>${desafio.horas}</td>
+           <td>${desafio.precio}</td>
+           <td><input id="" type="number" value="" min="1" max="1000" step="1" style="width: 50px;"/></td>
+           <td>Total</td> 
+       </tr>
+    `;
+      })
+   }else{
+     carrito = [];
+   }
+ });
+
+
+//  logica para la creacion de las cards
 let card = document.getElementById("card1");
 
 renderizarDesafios();
@@ -184,33 +193,35 @@ desafios.forEach((desafio) => {
 
 
 // creacion de tabla carrito
-function agregarAlCarrito(desafio) {
-  let cantidad;
-  carrito.push(desafio);
-  document.getElementById("tablaBody").innerHTML += `
-      <tr>
-          <td>${desafio.nombreDesafio}</td>
-          <td>${desafio.horas}</td>
-          <td>${desafio.precio}</td>
-          <td><input id="cantidadProductos${desafio.id}" type="number" value"${cantidad}" min="1" max="1000" step="1" style="width: 50px;"/></td>
-          <td>$ ${desafio.precio}</td>
-      </tr>
-   `;
-  Swal.fire(
-    "producto:" + desafio.nombreDesafio,
-    "Agregado a tu carrito de compras !",
-    "success"
-  );
-localStorage.setItem("carrito", JSON.stringify(carrito));
 
 
-let cantidadProductos = document.getElementById(`cantidadProductos${desafio.id}`);
-cantidadProductos.addEventListener("click", (e) => {
-cantidadNueva = cantidadProductos.value;
-console.log(cantidadNueva*desafio.precio);
-});
+ function agregarAlCarrito(desafio) {
+   let cantidad;
+   carrito.push(desafio);
+   document.getElementById("tablaBody").innerHTML += `
+       <tr>
+           <td>${desafio.nombreDesafio}</td>
+           <td>${desafio.horas}</td>
+           <td>${desafio.precio}</td>
+           <td><input id="cantidadProductos${desafio.id}" type="number" value"${cantidad}" min="1" max="1000" step="1" style="width: 50px;"/></td>
+           <td>$ ${desafio.precio}</td>
+       </tr>
+    `;
+   Swal.fire(
+     "producto:" + desafio.nombreDesafio,
+     "Agregado a tu carrito de compras !",
+     "success"
+   );
+ localStorage.setItem("carrito", JSON.stringify(carrito));
 
-};
+
+ let cantidadProductos = document.getElementById(`cantidadProductos${desafio.id}`);
+ cantidadProductos.addEventListener("click", (e) => {
+ cantidadNueva = cantidadProductos.value;
+ console.log(cantidadNueva*desafio.precio);
+ });
+
+ };
 
 
 let listaF = document.getElementById("listaF");

@@ -60,9 +60,9 @@
     <main>
       <section>
         <div class="imagenPrincipal">
-          <div>
+          <div class="container">
             <h1  class="tituloDesafio">Nos Volvimos Locos !!</h1>
-            <h3  class="tituloDescuento">35% de descuento<br> en todos </br> nuestros desafios</h3>
+            <h2  class="tituloDescuento">35% de descuento<br> en todos </br> nuestros desafios</h2>
           </div>
           <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
             <div class="carousel-indicators">
@@ -72,13 +72,13 @@
             </div>
             <div class="carousel-inner">
               <div class="carousel-item active">
-                <img src="./imagenes/mochila.jpg" class="d-block w-100" alt="...">
+                <img src="./imagenes/mochila.jpg" class="d-block w-100" alt="mochila y montana">
               </div>
               <div class="carousel-item">
-                <img src="./imagenes/potre.jpg" class="d-block w-100" alt="...">
+                <img src="./imagenes/potre.jpg" class="d-block w-100" alt="lago valle grande">
               </div>
               <div class="carousel-item">
-                <img src="./imagenes/montanaMendoza.jpg" class="d-block w-100" alt="...">
+                <img src="./imagenes/montanaMendoza.jpg" class="d-block w-100" alt="bodega y montana">
               </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -93,22 +93,27 @@
         </div>
       </section>
       <section>
-        <div class="tituloPrincipalCard">
-          <h4>Arma tu Treking con tus preferencias</h4>
+        <div class="tituloPrincipalCard container">
+          <h3>Arma tu Treking con tus preferencias</h3>
         </div>
       </section>
-      <div id="contenedor">
+      <div class="container tituloTiempo">
+        <h3>Pronostico del tiempo</h3>
+        <img src="./imagenes/icono.png" alt="icono tiempo">
+      </div>
+      <div id="contenedor" class="container">
         <div id="caja1">
-            <h1 id="temperatura-valor"></h1>
-            <h1 id="temperatura-descripcion"></h1>
-            <h2 id="icono"></h2>
+            <h3 id="nombreLugar"></h3>
+            <h3 id="temperatura-valor"></h3>
+            <h3 id="temperatura-descripcion"></h3>
         </div>
         <div id="caja2">
             <h3>Atardecer</h3>
             <h3 id="atardecer"></h3>
             <h4 id="ultimaActualizacion"></h4>
         </div>
-    </div>
+  
+     </div>
       <section id="card1" class="tarjetaDesafio">
       </section> 
     </main>
