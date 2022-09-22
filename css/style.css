@@ -200,6 +200,13 @@
 .quienesSomosTexto p{
   max-width: 30rem;
 }
+.quienesSomosTexto h3{
+  color: rgb(0, 106, 113);
+
+}
+.quienesSomosTexto ul li{
+  list-style: none;
+}
 
 
 

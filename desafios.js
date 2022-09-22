@@ -60,81 +60,101 @@ const desafios = [
   },
 ];
 // clima con API open weather.
-let temperaturaValor = document.getElementById('temperatura-valor')  
-let temperaturaDescripcion = document.getElementById('temperatura-descripcion')  
-let atardecer = document.getElementById('atardecer')
-let ultimaActualizacion = document.getElementById('ultimaActualizacion')
-let nombre = document.getElementById('nombreLugar')
+let temperaturaValor = document.getElementById("temperatura-valor");
+let temperaturaDescripcion = document.getElementById("temperatura-descripcion");
+let atardecer = document.getElementById("atardecer");
+let ultimaActualizacion = document.getElementById("ultimaActualizacion");
+let nombre = document.getElementById("nombreLugar");
 
 const options = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': 'b775cf1501mshc2c4a06925cfa9cp1491e9jsne18837d3f64e',
-		'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com'
-	}
+  method: "GET",
+  headers: {
+    "X-RapidAPI-Key": "b775cf1501mshc2c4a06925cfa9cp1491e9jsne18837d3f64e",
+    "X-RapidAPI-Host": "weatherapi-com.p.rapidapi.com",
+  },
 };
 
-fetch('https://weatherapi-com.p.rapidapi.com/forecast.json?q=Mendoza&days=2&lang=es&dt=2022-09-14', options)
-	.then(response => response.json())
-	.then(tiempo => verTiempo(tiempo))
-	.catch(err => console.error(err));
-  
-function verTiempo(tiempo){
-  console.log(tiempo)
-  let nombreMendoza = (tiempo.location.region);
-  let temperaturaActual = (tiempo.current.temp_c);
-  let descripcion = (tiempo.current.condition.text);
-  let atardecerSanRafael= (tiempo.forecast.forecastday[0].astro.sunset);
-  let actualizacion = (tiempo.current.last_updated);
-  nombre.innerHTML +=`
+fetch(
+  "https://weatherapi-com.p.rapidapi.com/forecast.json?q=Mendoza&days=2&lang=es&dt=2022-09-14",
+  options
+)
+  .then((response) => response.json())
+  .then((tiempo) => verTiempo(tiempo))
+  .catch((err) => console.error(err));
+
+function verTiempo(tiempo) {
+  console.log(tiempo);
+  let nombreMendoza = tiempo.location.region;
+  let temperaturaActual = tiempo.current.temp_c;
+  let descripcion = tiempo.current.condition.text;
+  // let atardecerSanRafael = tiempo.forecast.forecastday[0].astro.sunset;
+  let actualizacion = tiempo.current.last_updated;
+  nombre.innerHTML += `
   <tr>
    <td>${nombreMendoza} </td>
   </tr>
   `;
-  temperaturaValor.innerHTML +=`
+  temperaturaValor.innerHTML += `
   <tr>
    <td>${temperaturaActual} º Grados Celcius</td>
   </tr>
   `;
-  temperaturaDescripcion.innerHTML +=`
+  temperaturaDescripcion.innerHTML += `
   <tr>
   <td>${descripcion}</td>
   </tr>
   `;
-  atardecer.innerHTML +=`
-  <tr>
-  <td>${atardecerSanRafael}</td>
-  </tr>
-  `;
-  ultimaActualizacion.innerHTML +=`
+  // atardecer.innerHTML += `
+  // <tr>
+  // <td>${atardecerSanRafael}</td>
+  // </tr>
+  // `;
+  ultimaActualizacion.innerHTML += `
   <tr>
   <td>Ultima Actualizacion ${actualizacion}</td>
   </tr>
   `;
 }
 
-// Carrito de compras con storage y evento al cargar
+//  Carrito de compras con storage y evento al cargar
 
- let carrito; 
- document.addEventListener("DOMContentLoaded", () => {
-   if (localStorage.getItem("carrito")) {
-      carrito = JSON.parse(localStorage.getItem("carrito"));
-      carrito.map((desafio)=>{
-       document.getElementById("tablaBody").innerHTML += `
-       <tr>
-           <td>${desafio.nombreDesafio}</td>
-           <td>${desafio.horas}</td>
-           <td>${desafio.precio}</td>
-           <td><input id="" type="number" value="" min="1" max="1000" step="1" style="width: 50px;"/></td>
-           <td>Total</td> 
-       </tr>
-    `;
-      })
-   }else{
-     carrito = [];
-   }
- });
+//  let carrito = [];
 
+//  document.addEventListener("DOMContentLoaded", () => {
+//    carrito = JSON.parse(localStorage.getItem("carrito"));
+//      if (localStorage.getItem("carrito")) {
+//         carrito = JSON.parse(localStorage.getItem("carrito"));
+//         carrito.map((desafio)=>{addItemRowToCart(desafio)})}else{carrito = [];}
+
+//    }
+
+//    );
+
+let carrito;
+document.addEventListener("DOMContentLoaded", () => {
+  if (localStorage.getItem("carrito")) {
+    carrito = JSON.parse(localStorage.getItem("carrito"));
+    carrito.map((desafio) => {
+      let prodEnCarrito = {
+        ...desafio,
+      };
+      document.getElementById("tablaBody").innerHTML += `
+      <tr id='fila${prodEnCarrito.id}'>
+      <td>${prodEnCarrito.nombreDesafio}</td>
+      <td>${prodEnCarrito.horas}</td>
+      <td>${prodEnCarrito.precio}</td>
+      <td id='${prodEnCarrito.id}'> ${prodEnCarrito.cantidad}</td>
+      <td><button class='btn btn-light' onclick='eliminar(${prodEnCarrito.id})'>🗑️</button></td>
+      </tr>`;
+    });
+    
+  } else {
+    carrito = [];
+  }
+  
+  document.getElementById("gastoTotal").innerText = `Total: $ ${calcularTotal()}`;
+  
+});
 
 //  logica para la creacion de las cards
 let card = document.getElementById("card1");
@@ -168,9 +188,9 @@ function renderizarDesafios() {
 
   // Mostrar carrito
 
-  verCarrito.innerHTML+=`
-  <button type="button" class="btn btn-success">Ver Mi Carrito</button>
-  `
+  verCarrito.innerHTML += `
+  <button type="button" class="btn btn-primary">Ver Mi Carrito</button>
+  `;
   verCarrito.addEventListener("click", () => {
     dialog.showModal();
   });
@@ -190,40 +210,74 @@ desafios.forEach((desafio) => {
     });
 });
 
-
-
 // creacion de tabla carrito
+function agregarAlCarrito(desafio) {
+  let encontrado = carrito.find((p) => p.id == desafio.id);
+  if (encontrado == undefined) {
+    let prodEnCarrito = {
+      ...desafio,
+      cantidad: 1,
+    };
+    carrito.push(prodEnCarrito);
+    Swal.fire(
+      "producto:" + desafio.nombreDesafio,
+      "Agregado a tu carrito de compras !",
+      "success"
+    );
+    document.getElementById("tablaBody").innerHTML += `
+      <tr id='fila${prodEnCarrito.id}'>
+      <td>${prodEnCarrito.nombreDesafio}</td>
+      <td>${prodEnCarrito.horas}</td>
+      <td>${prodEnCarrito.precio}</td>
+      <td id='${prodEnCarrito.id}'> ${prodEnCarrito.cantidad}</td>
+      <td><button class='btn btn-light' onclick='eliminar(${prodEnCarrito.id})'>🗑️</button></td>
+      </tr>`;
+    
+
+  } else {
+    let posicion = carrito.findIndex((p) => p.id == desafio.id);
+    console.log(posicion);
+    carrito[posicion].cantidad += 1;
+    document.getElementById(desafio.id).innerHTML = carrito[posicion].cantidad;
+  }
+  document.getElementById(
+    "gastoTotal"
+  ).innerText = `Total: $ ${calcularTotal()}`;
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+
+  // addEventToImputNumber(carrito);
+}
+function calcularTotal() {
+  let suma = 0;
+  for (const el of carrito) {
+    suma = suma + el.precio * el.cantidad;
+  }
+  return suma;
+}
+
+function eliminar(id){
+  let indice = carrito.findIndex(prod => prod.id == id);
+  carrito.splice(indice,1); //eliminando del carro
+  console.log(indice)
+  console.log(carrito)
+  let filaB = document.getElementById(`fila${id}`);
+  document.getElementById("tablaBody").removeChild(filaB);  //eliminando de la tabla
+   document.getElementById("gastoTotal").innerText=(`Total: $ ${calcularTotal()}`);
+   localStorage.setItem("carrito",JSON.stringify(carrito));
+  Swal.fire("Producto eliminado del carro!")
+}
+
+//cree esta funcion para agregar en evento al input cantidad y que me aplicara la logiga que contiene
+//Esta funcion la llamo en dos momentos de mi app 1. cuando agrego un producto al carrito, 2. cuando recupero mi carrito del localStorage
+
+const confirmarB = document.getElementById("confirmar");
 
 
- function agregarAlCarrito(desafio) {
-   let cantidad;
-   carrito.push(desafio);
-   document.getElementById("tablaBody").innerHTML += `
-       <tr>
-           <td>${desafio.nombreDesafio}</td>
-           <td>${desafio.horas}</td>
-           <td>${desafio.precio}</td>
-           <td><input id="cantidadProductos${desafio.id}" type="number" value"${cantidad}" min="1" max="1000" step="1" style="width: 50px;"/></td>
-           <td>$ ${desafio.precio}</td>
-       </tr>
-    `;
-   Swal.fire(
-     "producto:" + desafio.nombreDesafio,
-     "Agregado a tu carrito de compras !",
-     "success"
-   );
- localStorage.setItem("carrito", JSON.stringify(carrito));
+//Esta funcion la llamo en dos momentos de mi app 1. cuando agrego un producto al carrito, 2. cuando recupero mi carrito del localStorage
+// function addItemRowToCart({ nombreDesafio, horas, precio, id }, cantidad = 1) {
+//   document.getElementById("tablaBody").innerHTML += `
 
-
- let cantidadProductos = document.getElementById(`cantidadProductos${desafio.id}`);
- cantidadProductos.addEventListener("click", (e) => {
- cantidadNueva = cantidadProductos.value;
- console.log(cantidadNueva*desafio.precio);
- });
-
- };
 
 
 let listaF = document.getElementById("listaF");
 listaF.innerHTML = `<ul><li>INSTAGRAM</li><li>FACEBOOK</li><li>WATHSAAP</li></ul>`;
-

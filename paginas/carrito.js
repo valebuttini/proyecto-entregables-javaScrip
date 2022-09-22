@@ -24,8 +24,16 @@ formulario.innerHTML+=`
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+<select class="form-select" aria-label="Default select example">
+  <option selected>Open this select menu</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+</select>
 `
-
+let messi = JSON.stringify(localStorage.getItem("carrito"));
+console.log(JSON.parse(messi))
+document.getElementById("productoCarrito").innerText = `Producto en carrito:  ${messi}`;
 let listaF = document.getElementById("listaF");
 listaF.innerHTML =
   `<ul><li>INSTAGRAM</li><li>FACEBOOK</li><li>WATHSAAP</li></ul>`;
