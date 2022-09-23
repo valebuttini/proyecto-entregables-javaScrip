@@ -59,12 +59,14 @@ const desafios = [
       "Si buscan ver paisajes, entonces deben conocer el cerro Gallo",
   },
 ];
+
 // clima con API open weather.
 let temperaturaValor = document.getElementById("temperatura-valor");
 let temperaturaDescripcion = document.getElementById("temperatura-descripcion");
-let atardecer = document.getElementById("atardecer");
+let velocidadDelViento = document.getElementById("velocidadDelViento");
 let ultimaActualizacion = document.getElementById("ultimaActualizacion");
 let nombre = document.getElementById("nombreLugar");
+let precipitacionProbabilidad = document.getElementById("probabilidadPrecipitacion");
 
 const options = {
   method: "GET",
@@ -87,8 +89,9 @@ function verTiempo(tiempo) {
   let nombreMendoza = tiempo.location.region;
   let temperaturaActual = tiempo.current.temp_c;
   let descripcion = tiempo.current.condition.text;
-  // let atardecerSanRafael = tiempo.forecast.forecastday[0].astro.sunset;
+  let velocidadViento = tiempo.current.wind_kph;
   let actualizacion = tiempo.current.last_updated;
+  let precipitacion = tiempo.current.precip_in;
   nombre.innerHTML += `
   <tr>
    <td>${nombreMendoza} </td>
@@ -104,31 +107,24 @@ function verTiempo(tiempo) {
   <td>${descripcion}</td>
   </tr>
   `;
-  // atardecer.innerHTML += `
-  // <tr>
-  // <td>${atardecerSanRafael}</td>
-  // </tr>
-  // `;
+  velocidadDelViento.innerHTML += `
+   <tr>
+   <td>${velocidadViento}</td>
+   </tr>
+   `;
   ultimaActualizacion.innerHTML += `
   <tr>
   <td>Ultima Actualizacion ${actualizacion}</td>
   </tr>
   `;
+  precipitacionProbabilidad.innerHTML += `
+  <tr>
+  <td>Probabilidad de lluvia %${precipitacion}</td>
+  </tr>
+  `;
 }
 
 //  Carrito de compras con storage y evento al cargar
-
-//  let carrito = [];
-
-//  document.addEventListener("DOMContentLoaded", () => {
-//    carrito = JSON.parse(localStorage.getItem("carrito"));
-//      if (localStorage.getItem("carrito")) {
-//         carrito = JSON.parse(localStorage.getItem("carrito"));
-//         carrito.map((desafio)=>{addItemRowToCart(desafio)})}else{carrito = [];}
-
-//    }
-
-//    );
 
 let carrito;
 document.addEventListener("DOMContentLoaded", () => {
@@ -138,7 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
       let prodEnCarrito = {
         ...desafio,
       };
-      document.getElementById("tablaBody").innerHTML += `
+      document.getElementById("tablaBodyCarrito").innerHTML += `
       <tr id='fila${prodEnCarrito.id}'>
       <td>${prodEnCarrito.nombreDesafio}</td>
       <td>${prodEnCarrito.horas}</td>
@@ -147,17 +143,17 @@ document.addEventListener("DOMContentLoaded", () => {
       <td><button class='btn btn-light' onclick='eliminar(${prodEnCarrito.id})'>🗑️</button></td>
       </tr>`;
     });
-    
   } else {
     carrito = [];
   }
-  
-  document.getElementById("gastoTotal").innerText = `Total: $ ${calcularTotal()}`;
-  
+
+  document.getElementById(
+    "gastoTotal"
+  ).innerText = `Total: $ ${calcularTotal()}`;
 });
 
 //  logica para la creacion de las cards
-let card = document.getElementById("card1");
+let card = document.getElementById("cardDesafios");
 
 renderizarDesafios();
 function renderizarDesafios() {
@@ -224,7 +220,7 @@ function agregarAlCarrito(desafio) {
       "Agregado a tu carrito de compras !",
       "success"
     );
-    document.getElementById("tablaBody").innerHTML += `
+    document.getElementById("tablaBodyCarrito").innerHTML += `
       <tr id='fila${prodEnCarrito.id}'>
       <td>${prodEnCarrito.nombreDesafio}</td>
       <td>${prodEnCarrito.horas}</td>
@@ -232,19 +228,21 @@ function agregarAlCarrito(desafio) {
       <td id='${prodEnCarrito.id}'> ${prodEnCarrito.cantidad}</td>
       <td><button class='btn btn-light' onclick='eliminar(${prodEnCarrito.id})'>🗑️</button></td>
       </tr>`;
-    
-
   } else {
     let posicion = carrito.findIndex((p) => p.id == desafio.id);
     console.log(posicion);
     carrito[posicion].cantidad += 1;
     document.getElementById(desafio.id).innerHTML = carrito[posicion].cantidad;
+    Swal.fire(
+      "producto:" + desafio.nombreDesafio,
+      "Se añadio en cantidad",
+      "success"
+    );
   }
   document.getElementById(
     "gastoTotal"
   ).innerText = `Total: $ ${calcularTotal()}`;
   localStorage.setItem("carrito", JSON.stringify(carrito));
-
 
   // addEventToImputNumber(carrito);
 }
@@ -256,28 +254,19 @@ function calcularTotal() {
   return suma;
 }
 
-function eliminar(id){
-  let indice = carrito.findIndex(prod => prod.id == id);
-  carrito.splice(indice,1); //eliminando del carro
-  console.log(indice)
-  console.log(carrito)
+function eliminar(id) {
+  let indice = carrito.findIndex((prod) => prod.id == id);
+  carrito.splice(indice, 1); //eliminando del carro
+  console.log(indice);
+  console.log(carrito);
   let filaB = document.getElementById(`fila${id}`);
-  document.getElementById("tablaBody").removeChild(filaB);  //eliminando de la tabla
-   document.getElementById("gastoTotal").innerText=(`Total: $ ${calcularTotal()}`);
-   localStorage.setItem("carrito",JSON.stringify(carrito));
-  Swal.fire("Producto eliminado del carro!")
+  document.getElementById("tablaBodyCarrito").removeChild(filaB); //eliminando de la tabla
+  document.getElementById(
+    "gastoTotal"
+  ).innerText = `Total: $ ${calcularTotal()}`;
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+  Swal.fire("Producto eliminado del carro!");
 }
-
-//cree esta funcion para agregar en evento al input cantidad y que me aplicara la logiga que contiene
-//Esta funcion la llamo en dos momentos de mi app 1. cuando agrego un producto al carrito, 2. cuando recupero mi carrito del localStorage
-
-const confirmarB = document.getElementById("confirmar");
-
-
-//Esta funcion la llamo en dos momentos de mi app 1. cuando agrego un producto al carrito, 2. cuando recupero mi carrito del localStorage
-// function addItemRowToCart({ nombreDesafio, horas, precio, id }, cantidad = 1) {
-//   document.getElementById("tablaBody").innerHTML += `
-
 
 
 let listaF = document.getElementById("listaF");

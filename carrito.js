@@ -1,13 +1,16 @@
 
+let validarContraseña = document.getElementById("exampleInputPassword1");
+
 let botonCompra = document.getElementById("botonCompra")
 botonCompra.addEventListener("click", function () {
  
 document.getElementById(
   "parrafoCompra"
 ).innerText = `Tu Compra fue aceptada.
- Enviamos un E-mail con toda la informacion para el pago y sobre la salida de la excursion`;
+ Enviamos un E-mail con toda la informacion para realizar  el pago y sobre la salida de la excursion.
+ Tambien enviamos la informacion necesaria para el dia de la aventura, gracias popr confiar en Montaña Andina !!`;
   Swal.fire({
-    title: 'Custom animation with Animate.css',
+    title: 'Tu compra fue agregada a nuestro sistema con exito !!',
     showClass: {
       popup: 'animate__animated animate__fadeInDown'
     },

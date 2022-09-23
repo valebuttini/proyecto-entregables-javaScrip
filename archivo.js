@@ -15,6 +15,9 @@ const destinos = [{
   ruta: "Ruta Nacional 150",
 },];
 
+
+// renderizo posible destinos y muestro por DOM
+
 let cardIndex=document.getElementById("cardIndex");
 renderizarDestinos();
 

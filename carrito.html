@@ -16,17 +16,16 @@
   <body>
     <header>
       <nav class="navegador">
-        <li><a href="../index.html">INICIO</a></li>
-        <li><a href="../paginas/quienesSomos.html">QUIENES SOMOS</a></li>
-        <li><a href="../desafios.html">DESAFIOS</a></li>
-        <li><a href="../paginas/carrito.html">CARRITO</a></li>
+        <li><a href="./index.html">INICIO</a></li>
+        <li><a href="./quienesSomos.html">QUIENES SOMOS</a></li>
+        <li><a href="./desafios.html">DESAFIOS</a></li>
+        <li><a href="./carrito.html">CARRITO</a></li>
       </nav>
     </header>
     <main>
-      <section>
-        <p class="text-lg-start fs-2">Tu compra casi esta lista !!</p>
-        <p id="productoCarrito" class="text-lg-start fs-3"></p>
-        <p class="text-lg-start fs-4">
+      <section class="titulosCarrito">
+        <h1>Tu compra casi esta lista !!</h1>
+        <p>
           Formulario de salud para nuestro seguro del aventurero
         </p>
       </section>
@@ -41,6 +40,7 @@
               type="text"
               placeholder="Ingrese su nombre"
               aria-label="default input example"
+              
             />
           </div>
           <div class="mb-3">
@@ -100,16 +100,15 @@
             />
           </div>
           <div class="mb-3 form-check">
-            <input
+            <input  id="botonCompra"
               type="checkbox"
               class="form-check-input"
               id="exampleCheck1"
             />
-            <label id="botonCompra" class="form-check-label" for="exampleCheck1"
+            <label class="form-check-label" for="exampleCheck1"
               >Confirmar</label
             >
           </div>
-          <button  type="submit" class="btn btn-primary">Acceder y comprar</button>
         </form>
       </div>
       <div>

@@ -18,9 +18,9 @@
     <header>
       <nav class="navegador">
         <li><a href="./index.html">INICIO</a></li>
-        <li><a href="../paginas/quienesSomos.html">QUIENES SOMOS</a></li>
+        <li><a href="./quienesSomos.html">QUIENES SOMOS</a></li>
         <li><a href="./desafios.html">DESAFIOS</a></li>
-        <li><a href="../paginas/carrito.html">CARRITO</a></li>
+        <li><a href="./carrito.html">CARRITO</a></li>
         <dialog id="formulario">
           <form method="dialog">
             <section>
@@ -34,7 +34,7 @@
                         <th scope="col">Eliminar</th>
                     </tr>
                 </thead>
-                <tbody id="tablaBody">
+                <tbody id="tablaBodyCarrito">
                     <!-- aqui tabla carrito -->
                 </tbody>
             </table>
@@ -50,7 +50,7 @@
             </section>
             <menu>
               <button id="cancelar" type="reset">Cancelar</button>
-              <button id="confirmar" type="submit"><a href="./paginas/carrito.html"> Confirmar</a></button>
+              <button id="confirmarCompra" type="submit"><a href="./carrito.html"> Confirmar Compra</a></button>
             </menu>
           </form>
         </dialog>
@@ -104,19 +104,20 @@
         <img src="./imagenes/icono.png" alt="icono tiempo">
       </div>
       <div id="contenedor" class="container">
-        <div id="caja1">
+        <div id="cajaTiempo1">
             <h3 id="nombreLugar"></h3>
             <h3 id="temperatura-valor"></h3>
             <h3 id="temperatura-descripcion"></h3>
+            <h3 id="probabilidadPrecipitacion"></h3>
         </div>
-        <div id="caja2">
-            <h3>Atardecer</h3>
-            <h3 id="atardecer"></h3>
+        <div id="cajaTiempo2">
+            <h3>Velocidad del viento</h3>
+            <h3 id="velocidadDelViento"></h3>
             <h4 id="ultimaActualizacion"></h4>
         </div>
   
      </div>
-      <section id="card1" class="tarjetaDesafio">
+      <section id="cardDesafios" class="tarjetaDesafio">
       </section> 
     </main>
     <!-- footer con JS -->

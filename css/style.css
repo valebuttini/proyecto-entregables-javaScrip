@@ -24,31 +24,45 @@
   color: black;
   font-size: 16px;
 }
+/* medidad query para hacerlo responsive seccion NAVEGADOR */
+@media (max-width: 550px) {
+  .navegador li a {
+    text-decoration: none;
+    color: black;
+    font-size: 10px;
+  }
+  .navegador li {
+    padding: 0.5rem;
+    list-style: none;
+  }
+
+ }
 /* seccion Index+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-.tituloMontaña {
+.tituloMontañaPrincipal {
   display: flex;
-  margin-left: 29rem;
+  margin-left: 35rem;
   margin-top: 15px;
   font-size: 2.5rem;
   color: rgb(0, 106, 113);
 }
-.quienesSomos{
+.quienesSomosIndex{
   background-image: url(https://p4.wallpaperbetter.com/wallpaper/319/24/935/landscape-mountains-peacefull-far-view-wallpaper-preview.jpg) ;
   height: 20rem;
   background-repeat:round;
 }
-.titulo2 {
+.tituloQuienesSomosIndex {
   display: flex;
   margin-left: 32rem;
   margin-top: 35px;
   font-size: 1.5rem;
   text-decoration: underline;
 }
-.parrafoIndex {
+ .parrafoIndex {
   max-width: 890px;
-  margin-left: 17rem;
-}
-.tituloDestino {
+  margin-left: 30px;
+
+} 
+.tituloDestinoIndex {
   display: flex;
   margin-left: 25rem;
   margin-top: 50px;
@@ -71,6 +85,33 @@
   justify-content: center;
   margin-top: 3rem;
 }
+/* medidad query para hacerlo responsive seccion INDEX */
+@media (max-width: 800px) {
+  .parrafoIndex {
+    max-width: 300px;
+    margin-left: 30px;
+  } 
+  .tituloMontañaPrincipal {
+    display: flex;
+    margin-left: 10rem;
+    margin-top: 15px;
+    font-size: 2rem;
+  }
+  .tituloQuienesSomosIndex {
+    display: flex;
+    margin-left: 10rem;
+    margin-top: 35px;
+    font-size: 1rem;
+    text-decoration: underline;
+  }
+  .tituloDestinoIndex {
+    display: flex;
+    margin-left: 10rem;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-size: 1rem;
+  }
+ }
 /* seccion desafios++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 .titulosDesafios{
   display: flex;
@@ -126,12 +167,11 @@
   margin-bottom: 2rem;
   color: rgb(0, 106, 113);
 } 
-.messi{
-  color: red;
+#confirmarCompra a{
+  text-decoration: none;
+  color: black;
 }
-#tablaBody{
-  border-radius: solid  red 10px;
-}
+
 /* seccion desafios elemento tiempo ***************************************************************** */
 #contenedor{
   display: flex;
@@ -139,18 +179,18 @@
   align-items: center;
   
 }
-#caja1{
+#cajaTiempo1{
   width: 170px;
-  height: 190px;
+  height: 200px;
   background-color:  rgba(0, 105, 113, 0.438);
   margin-left: 2px;
   border-style:solid 1px color rgb(87, 87, 87);
   border-radius: 3px ;
   
 }
-#caja2{
+#cajaTiempo2{
   width: 170px;
-  height: 190px;
+  height: 200px;
   background-color: rgba(0, 105, 113, 0.438);
   margin-left: 10px;
   border-style:solid 1px color rgb(87, 87, 87);
@@ -185,6 +225,11 @@
   font-size: 20px;
   padding: 5px;
 }
+#probabilidadPrecipitacion{
+  font-size: 20px;
+  padding: 4px;
+  margin-top: 1px;
+}
 
 
 /* seccion quienes somos *********************************************************************************************/
@@ -209,6 +254,7 @@
 }
 
 
+/* seccion carrito para terminar la compra  */
 
 .formularioCarrito {
     display: flex;
@@ -218,3 +264,32 @@
     align-items: center;
 }
 
+.titulosCarrito{
+  display: flex;
+  flex-direction: column;
+  margin-left: 22rem;
+  color: rgba(0, 105, 113, 0.438) ;
+}
+.titulosCarrito p{
+max-width: 20rem;
+}
+/* #botonCompra{
+  display: flex;
+  flex-direction: column;
+  margin-left: ;
+} */
+
+/* medidad query para hacerlo responsive seccion carrito */
+@media (max-width: 850px) {
+  .titulosCarrito{
+    display: flex;
+    flex-direction: column;
+    margin-left: 6rem;
+    color: rgba(0, 105, 113, 0.438) ;
+    max-width: 10rem;
+  }
+  .titulosCarrito p{
+  max-width: 10rem;
+  }
+
+ }
