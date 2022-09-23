@@ -245,6 +245,7 @@ function agregarAlCarrito(desafio) {
   ).innerText = `Total: $ ${calcularTotal()}`;
   localStorage.setItem("carrito", JSON.stringify(carrito));
 
+
   // addEventToImputNumber(carrito);
 }
 function calcularTotal() {
