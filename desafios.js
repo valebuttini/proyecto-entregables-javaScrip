@@ -109,7 +109,7 @@ function verTiempo(tiempo) {
   `;
   velocidadDelViento.innerHTML += `
    <tr>
-   <td>${velocidadViento}</td>
+   <td>${velocidadViento} Kmh</td>
    </tr>
    `;
   ultimaActualizacion.innerHTML += `
