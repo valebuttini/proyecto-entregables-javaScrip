@@ -1,9 +1,17 @@
-
+let form = document.getElementById("submit")
 let validarContraseña = document.getElementById("exampleInputPassword1");
+
+form.addEventListener('click',function(){
+
+})
 
 let botonCompra = document.getElementById("botonCompra")
 botonCompra.addEventListener("click", function () {
- 
+  if(validarContraseña.value.length < 8){
+    alert("La contrasena debe ser de mas de 8 caracteres ")
+  }else{
+    alert("contrasena correcta")
+  }
 document.getElementById(
   "parrafoCompra"
 ).innerText = `Tu Compra fue aceptada.
@@ -18,22 +26,8 @@ document.getElementById(
       popup: 'animate__animated animate__fadeOutUp'
     }
   })
+
 });
 
-
-
-
-
-
-
-// let messi = localStorage.getItem("carrito");
-// let cristiano = JSON.parse(messi);
-// let yaya = toString(cristiano);
-// console.log(yaya);
-// let cristiano = messi.substring(2,20)
-// console.log((cristiano))
-// document.getElementById(
-//   "productoCarrito"
-// ).innerText = `Producto en carrito:  ${cristiano}`;
 let listaF = document.getElementById("listaF");
 listaF.innerHTML = `<ul><li>INSTAGRAM</li><li>FACEBOOK</li><li>WATHSAAP</li></ul>`;

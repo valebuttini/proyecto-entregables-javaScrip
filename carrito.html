@@ -52,6 +52,7 @@
               type="text"
               placeholder="Ingrese su nombre"
               aria-label="default input example"
+              required
             />
           </div>
           <select class="form-select" aria-label="Default select example">
@@ -84,6 +85,7 @@
               class="form-control"
               id="exampleInputEmail1"
               aria-describedby="emailHelp"
+              required
             />
             <div id="emailHelp" class="form-text">
               Nosotros nunca compartiremos la informacion personal
@@ -97,8 +99,10 @@
               type="password"
               class="form-control"
               id="exampleInputPassword1"
+              required
             />
           </div>
+
           <div class="mb-3 form-check">
             <input  id="botonCompra"
               type="checkbox"
@@ -106,9 +110,11 @@
               id="exampleCheck1"
             />
             <label class="form-check-label" for="exampleCheck1"
-              >Confirmar</label
+              >Confirmar Compra</label
             >
           </div>
+          <button type="submit" class="btn btn-primary" id="submit">Confirmar Datos</button>
+
         </form>
       </div>
       <div>
